@@ -19,7 +19,7 @@
 <div class="container">
     <div class="card bg-dark border-white">
         <div class="card-header border-white">
-            <div class="container row align-items-center">
+            <div class="container m-0 p-0 row align-items-center">
                 <div class="col my-3">
                     <h5>Edit form</h5>
                 </div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body border-top border-white">
             <form action="{{ route('manage-forms.update', $id) }}" method="POST">
                 @csrf
 
@@ -78,7 +78,7 @@
                     'text' => $details['footer'],
                 ])
 
-                <div class="row mx-1">
+                <div class="row m-0 p-0">
                     <button type="submit" class="btn btn-sm btn-outline-success">
                         <i class="bi bi-clipboard2-check"></i>
                         Update

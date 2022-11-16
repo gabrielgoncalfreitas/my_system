@@ -89,10 +89,14 @@ class ManageFormsController extends Controller
 
     public function edit($id, $code_message = null)
     {
-        return view('manage-forms.edit', [
-            'id'           => $id,
-            'forms'        => Forms::where('id', $id)->get()->first(),
-            'code_message' => $code_message,
-        ]);
+        if (!empty(Forms::find($id))) {
+            return view('manage-forms.edit', [
+                'id'           => $id,
+                'forms'        => Forms::where('id', $id)->get()->first(),
+                'code_message' => $code_message,
+            ]);
+        } else {
+            return redirect(route('manage-forms.index'));
+        }
     }
 }
