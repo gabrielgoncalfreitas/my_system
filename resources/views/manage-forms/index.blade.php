@@ -31,7 +31,36 @@
             </div>
         </div>
         <div class="card-body">
-            This is some text within a card body.
+            <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col w-auto"># </th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Instruction</th>
+                            <th scope="col">Footer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($forms as $form)
+                            @php
+                                $details = json_decode($form->details, true);
+                            @endphp
+                            <tr>
+                                <td scope="row">
+                                    <a class="text-decoration-none"
+                                        href="{{ route('manage-forms.edit', [$form->id, '']) }}">
+                                        {{ $form->id }}
+                                    </a>
+                                </td>
+                                <td>{{ $details['title'] }}</td>
+                                <td>{{ $details['instruction'] }}</td>
+                                <td>{{ $details['footer'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

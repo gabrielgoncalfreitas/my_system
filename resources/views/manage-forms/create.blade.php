@@ -34,14 +34,16 @@
 
                 @include('components.fields.text', [
                     'title' => 'title',
+                    'name' => 'details[title]',
                     'maxlength' => 255,
                     'required' => true,
                     'label' => 'Title <span class="text-danger">*</span>',
-                    'old_value' => $old_title ?? '',
+                    'value' => $old_title ?? '',
                 ])
 
                 @include('components.fields.textarea', [
                     'title' => 'instruction',
+                    'name' => 'details[instruction]',
                     'maxlength' => 64000,
                     'required' => true,
                     'label' => 'Instruction <span class="text-danger">*</span>',
@@ -50,6 +52,7 @@
 
                 @include('components.fields.textarea', [
                     'title' => 'footer',
+                    'name' => 'details[footer]',
                     'maxlength' => 64000,
                     'required' => true,
                     'label' => 'Footer text <span class="text-danger">*</span>',

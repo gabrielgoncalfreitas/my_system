@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('sexual_orientations', function (Blueprint $table) {
             $table->id();
-            $table->json('details')->nullable();
-            $table->json('fields')->nullable();
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('sexual_orientations');
     }
 };

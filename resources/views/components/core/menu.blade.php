@@ -84,7 +84,7 @@
                         </li>
                         <li><a class="dropdown-item text-secondary" href="#">Language Configuration</a></li>
                         <li class="dropdown">
-                            <div class="dropdown-item dropdown-toggle active" role="button" data-bs-toggle="dropdown"
+                            <div class="dropdown-item dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" aria-expanded="false">
                                 Manage
                             </div>

@@ -1,4 +1,4 @@
-<div class="alert alert-{{ $type }} fade show" role="alert">
+<div class="alert alert-{{ $type }} m-0 fade show" role="alert">
     {!! $icon ?? '' !!} {!! $description !!}
 
     @if ($dismiss)
