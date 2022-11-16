@@ -39,6 +39,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Instruction</th>
                             <th scope="col">Footer</th>
+                            <th scope="col" style="width: 0"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,13 @@
                                 <td>{{ $details['title'] }}</td>
                                 <td>{{ $details['instruction'] }}</td>
                                 <td>{{ $details['footer'] }}</td>
+                                <td>
+                                    <a type="submit" href="{{ route('manage-forms.delete', $form->id) }}"
+                                        class="btn btn-outline-danger btn-sm"
+                                        data-bs-toggle="tooltip"data-bs-title="Delete form">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

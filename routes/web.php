@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/', [ManageFormsController::class, 'index'])->name('manage-forms.index');
             Route::get('/create', [ManageFormsController::class, 'create'])->name('manage-forms.create');
             Route::get('/edit/{id}/{code_message?}', [ManageFormsController::class, 'edit'])->name('manage-forms.edit');
+            Route::get('/delete/{id}', [ManageFormsController::class, 'delete'])->name('manage-forms.delete');
             Route::post('/store', [ManageFormsController::class, 'store'])->name('manage-forms.store');
             Route::post('/update/{id}', [ManageFormsController::class, 'update'])->name('manage-forms.update');
         });

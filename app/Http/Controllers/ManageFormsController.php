@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Forms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use OCILob;
 
 class ManageFormsController extends Controller
 {
@@ -98,5 +97,12 @@ class ManageFormsController extends Controller
         } else {
             return redirect(route('manage-forms.index'));
         }
+    }
+
+    public function delete($id)
+    {
+        if (!empty(Forms::find($id))) Forms::where('id', $id)->delete();
+
+        return redirect(route('manage-forms.index'));
     }
 }
