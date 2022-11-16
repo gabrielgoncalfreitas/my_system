@@ -54,9 +54,24 @@
                                         {{ $form->id }}
                                     </a>
                                 </td>
-                                <td>{{ $details['title'] }}</td>
-                                <td>{{ $details['instruction'] }}</td>
-                                <td>{{ $details['footer'] }}</td>
+                                <td>
+                                    <a class="text-decoration-none"
+                                        href="{{ route('manage-forms.edit', [$form->id, '']) }}">
+                                        {{ $details['title'] }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="text-decoration-none text-white"
+                                        href="{{ route('manage-forms.edit', [$form->id, '']) }}">
+                                        {{ $details['instruction'] }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="text-decoration-none text-white"
+                                        href="{{ route('manage-forms.edit', [$form->id, '']) }}">
+                                        {{ $details['footer'] }}
+                                    </a>
+                                </td>
                                 <td>
                                     <a type="submit" href="{{ route('manage-forms.delete', $form->id) }}"
                                         class="btn btn-outline-danger btn-sm"

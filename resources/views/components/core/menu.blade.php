@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="dropdown mx-5">
-                    <div class="nav-link dropdown-toggle active" role="button" data-bs-toggle="dropdown"
+                    <div class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Reports">
                             <i class="bi bi-file-text"></i>
@@ -20,7 +20,7 @@
                 </li>
 
                 <li class="dropdown mx-5">
-                    <div class="nav-link dropdown-toggle active" role="button" data-bs-toggle="dropdown"
+                    <div class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Profiles">
                             <i class="bi bi-people"></i>
@@ -33,7 +33,7 @@
                 </li>
 
                 <li class="dropdown mx-5">
-                    <div class="nav-link dropdown-toggle active" role="button" data-bs-toggle="dropdown"
+                    <div class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Premises">
                             <i class="bi bi-house-door"></i>
@@ -46,7 +46,7 @@
                 </li>
 
                 <li class="dropdown mx-5">
-                    <a class="nav-link active" href="#" aria-expanded="false">
+                    <a class="nav-link" href="#" aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Smartforms">
                             <i class="bi bi-list-ul"></i>
                         </span>
@@ -178,6 +178,13 @@
                     </ul>
                 </li>
             </ul>
+            <li class="dropdown mx-5">
+                <a class="nav-link active" href="{{ route('todos.index') }}" aria-expanded="false">
+                    <span data-bs-toggle="tooltip" data-bs-title="Todos">
+                        <i class="bi bi-check2-all"></i>
+                    </span>
+                </a>
+            </li>
         </div>
     </div>
 </nav>

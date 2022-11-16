@@ -87,18 +87,18 @@
             </form>
         </div>
     </div>
+</div>
 
-    <div class="card p-0 mt-4 mb-2 bg-dark">
-        <div class="card-header p-0">
-            <div data-bs-toggle="offcanvas" data-bs-target="#create-section" aria-controls="create-section">
-                <button type="button" class="btn btn-sm btn-outline-primary float-end" data-bs-toggle="tooltip"
-                    data-bs-title="Add new section">
-                    <i class="bi bi-receipt"></i>
-                </button>
-            </div>
-        </div>
+<div class="container mt-3 mb-2 d-flex justify-content-end">
+    <div data-bs-toggle="offcanvas" data-bs-target="#create-section" aria-controls="create-section">
+        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip"
+            data-bs-title="Add new section">
+            <i class="bi bi-receipt"></i>
+        </button>
     </div>
+</div>
 
+<div class="container">
     {{-- @foreach ($sections as $section) --}}
     <div class="card bg-dark border-white">
         <div class="card-header border-white">

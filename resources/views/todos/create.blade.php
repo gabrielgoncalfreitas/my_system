@@ -1,16 +1,13 @@
-@include('components.core.header', ['title' => 'Manage forms - Create'])
+@include('components.core.header', ['title' => 'Todos - Create'])
 
 <div class="container mt-4 d-flex justify-content-between">
-    <h4 class="fw-normal">Manage forms - create</h4>
+    <h4 class="fw-normal">Todos create</h4>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a class="text-decoration-none" href="{{ route('forms.index') }}">Home</a>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{{ route('admin.reports.index') }}">Home</a>
             </li>
-            <li class="breadcrumb-item" aria-current="page">
-                <a class="text-decoration-none" href="{{ route('manage-forms.index') }}">Manage forms</a>
-            </li>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{{ route('todos.index') }}">Todos</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create</li>
         </ol>
     </nav>
@@ -19,10 +16,10 @@
 <div class="container">
     <div class="card bg-dark border-white">
         <div class="card-header py-4 d-flex align-items-center justify-content-between border-white">
-            <h5>Create form</h5>
+            <h5>Create todo</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('manage-forms.store') }}" method="POST">
+            <form action="{{ route('todos.store') }}" method="POST">
                 @csrf
 
                 @if (isset($errors))
@@ -33,30 +30,21 @@
                 @endif
 
                 @include('components.fields.text', [
-                    'title' => 'title',
-                    'name' => 'details[title]',
+                    'title' => 'name',
+                    'name' => 'name',
                     'maxlength' => 255,
                     'required' => true,
-                    'label' => 'Title <span class="text-danger">*</span>',
-                    'value' => $old_title ?? '',
+                    'label' => 'Name <span class="text-danger">*</span>',
+                    'value' => $old_name ?? '',
                 ])
 
                 @include('components.fields.textarea', [
-                    'title' => 'instruction',
-                    'name' => 'details[instruction]',
+                    'title' => 'description',
+                    'name' => 'description',
                     'maxlength' => 64000,
                     'required' => true,
-                    'label' => 'Instruction <span class="text-danger">*</span>',
-                    'text' => $old_instruction ?? '',
-                ])
-
-                @include('components.fields.textarea', [
-                    'title' => 'footer',
-                    'name' => 'details[footer]',
-                    'maxlength' => 64000,
-                    'required' => true,
-                    'label' => 'Footer text <span class="text-danger">*</span>',
-                    'text' => $old_footer ?? '',
+                    'label' => 'Description <span class="text-danger">*</span>',
+                    'text' => $old_description ?? '',
                 ])
 
                 <div class="row m-0 p-0">
@@ -64,6 +52,11 @@
                         <i class="bi bi-clipboard2-check"></i>
                         Save
                     </button>
+
+                    <a href="{{ route('todos.index') }}" class="btn btn-outline-primary mt-1 btn-sm">
+                        <i class="bi bi-arrow-left-square"></i>
+                        Back
+                    </a>
                 </div>
             </form>
         </div>
