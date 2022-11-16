@@ -92,27 +92,32 @@
 <div class="container mt-3 mb-2 d-flex justify-content-end">
     <div data-bs-toggle="offcanvas" data-bs-target="#create-section" aria-controls="create-section">
         <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip"
-            data-bs-title="Add new section">
+            data-bs-title="Add new section" id="manage-forms-add-new-section">
             <i class="bi bi-receipt"></i>
         </button>
     </div>
 </div>
 
-<div class="container">
-    {{-- @foreach ($sections as $section) --}}
-    <div class="card bg-dark border-white">
-        <div class="card-header border-white">
+<div class="container" id="sections">
+    <div class="card-body text-center">
+        <ul class="list-group">
+            <li class="list-group-item bg-dark border-white text-white">
+                Sections is empty
+            </li>
+        </ul>
+    </div>
+    {{-- <div class="card bg-dark border-white" id="">
+        <div class="card-header border-white" id="">
             <div class="container row align-items-center">
                 <div class="col my-3">
-                    <h5>Edit form</h5>
+                    <h5 id="">Edit form</h5>
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" id="secion--body">
 
         </div>
-    </div>
-    {{-- @endforeach --}}
+    </div> --}}
 </div>
 
 @include('manage-forms.components.offcanvas.create-section')

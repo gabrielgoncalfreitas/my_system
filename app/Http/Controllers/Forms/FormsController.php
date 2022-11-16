@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Forms;
 
-use App\Models\Premises;
+use App\Http\Controllers\Controller;
+use App\Models\Forms;
 use Illuminate\Http\Request;
 
-class PremisesController extends Controller
+class FormsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PremisesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Premises  $premises
+     * @param  \App\Models\Forms  $forms
      * @return \Illuminate\Http\Response
      */
-    public function show(Premises $premises)
+    public function show(Forms $forms)
     {
         //
     }
@@ -52,10 +53,10 @@ class PremisesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Premises  $premises
+     * @param  \App\Models\Forms  $forms
      * @return \Illuminate\Http\Response
      */
-    public function edit(Premises $premises)
+    public function edit(Forms $forms)
     {
         //
     }
@@ -64,10 +65,10 @@ class PremisesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Premises  $premises
+     * @param  \App\Models\Forms  $forms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Premises $premises)
+    public function update(Request $request, Forms $forms)
     {
         //
     }
@@ -75,10 +76,10 @@ class PremisesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Premises  $premises
+     * @param  \App\Models\Forms  $forms
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Premises $premises)
+    public function destroy(Forms $forms)
     {
         //
     }

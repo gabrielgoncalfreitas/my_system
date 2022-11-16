@@ -5,3 +5,4 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
 </script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/manage-forms.js') }}"></script>

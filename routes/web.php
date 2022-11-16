@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ManageFormsController;
-use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\TodosController;
+use App\Http\Controllers\Forms\ManageForms\ManageFormsController;
+use App\Http\Controllers\Forms\ManageForms\ManageFormsSectionsController;
+use App\Http\Controllers\Reports\ReportsController;
+use App\Http\Controllers\Todos\TodosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,6 +32,11 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{id}', [ManageFormsController::class, 'delete'])->name('manage-forms.delete');
             Route::post('/store', [ManageFormsController::class, 'store'])->name('manage-forms.store');
             Route::post('/update/{id}', [ManageFormsController::class, 'update'])->name('manage-forms.update');
+
+            Route::prefix('sections')->group(function () {
+                Route::get('/', [ManageFormsSectionsController::class, 'load'])->name('manage-forms.sections.load');
+                Route::post('/', [ManageFormsSectionsController::class, 'store'])->name('manage-forms.sections.store');
+            });
         });
     });
 
@@ -46,5 +52,4 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', [TodosController::class, 'edit'])->name('todos.edit');
         Route::post('/edit/{id}', [TodosController::class, 'update'])->name('todos.update');
     });
-
 });

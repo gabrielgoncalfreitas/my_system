@@ -39,7 +39,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Instruction</th>
                             <th scope="col">Footer</th>
-                            <th scope="col" style="width: 0"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,11 +73,18 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a type="submit" href="{{ route('manage-forms.delete', $form->id) }}"
-                                        class="btn btn-outline-danger btn-sm"
-                                        data-bs-toggle="tooltip"data-bs-title="Delete form">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                                    <div class="button-group">
+                                        <a href="{{ route('manage-forms.edit', $form->id) }}"
+                                            class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="tooltip"data-bs-title="Edit">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a href="{{ route('manage-forms.delete', $form->id) }}"
+                                            class="btn btn-outline-danger btn-sm"
+                                            data-bs-toggle="tooltip"data-bs-title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

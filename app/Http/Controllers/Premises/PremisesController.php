@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Premises;
 
-use App\Models\Profiles;
+use App\Http\Controllers\Controller;
+use App\Models\Premises;
 use Illuminate\Http\Request;
 
-class ProfilesController extends Controller
+class PremisesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ProfilesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Premises  $premises
      * @return \Illuminate\Http\Response
      */
-    public function show(Profiles $profiles)
+    public function show(Premises $premises)
     {
         //
     }
@@ -52,10 +53,10 @@ class ProfilesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Premises  $premises
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profiles $profiles)
+    public function edit(Premises $premises)
     {
         //
     }
@@ -64,10 +65,10 @@ class ProfilesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Premises  $premises
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profiles $profiles)
+    public function update(Request $request, Premises $premises)
     {
         //
     }
@@ -75,10 +76,10 @@ class ProfilesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Premises  $premises
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profiles $profiles)
+    public function destroy(Premises $premises)
     {
         //
     }
