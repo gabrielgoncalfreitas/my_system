@@ -13,11 +13,22 @@
 
 <div class="container">
     <div class="card bg-dark border-white">
-        <div class="card-header py-4 d-flex align-items-center justify-content-between border-white">
-            <h5>Forms managment</h5>
+        <div class="card-header row align-items-center">
+            <h5 class="col-auto py-3">Forms managment</h5>
 
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a type="button" class="btn btn-outline-primary btn-sm"
+            <div class="col row align-items-center">
+                @if ($alert == 'deleted')
+                    @include('components.alert', [
+                        'icon' => '<i class="bi bi-exclamation-triangle"></i>',
+                        'description' => 'Form deleted!',
+                        'type' => 'danger',
+                        'dismiss' => true,
+                    ])
+                @endif
+            </div>
+
+            <div class="col-auto btn-group" role="group" aria-label="Basic example">
+                <a class="btn btn-outline-primary btn-sm"
                     data-bs-toggle="tooltip"data-bs-title="Create New Premises based form">
                     <i class="bi bi-house-door"></i>
                 </a>
@@ -30,7 +41,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body border-top border-white">
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover align-middle">
                     <thead>
@@ -72,7 +83,7 @@
                                         {{ $details['footer'] }}
                                     </a>
                                 </td>
-                                <td>
+                                <td class="col-sm-1 text-end">
                                     <div class="button-group">
                                         <a href="{{ route('manage-forms.edit', $form->id) }}"
                                             class="btn btn-outline-primary btn-sm"

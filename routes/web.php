@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Forms\FormsController;
 use App\Http\Controllers\Forms\ManageForms\ManageFormsController;
 use App\Http\Controllers\Forms\ManageForms\ManageFormsSectionsController;
 use App\Http\Controllers\Reports\ReportsController;
@@ -13,28 +14,27 @@ Route::get('/', function () {
 # /admin
 Route::prefix('admin')->group(function () {
 
-    # Reports
+    # /admin/reports
     Route::prefix('reports')->group(function () {
         Route::get('/', [ReportsController::class, 'index'])->name('admin.reports.index');
     });
 
     # /admin/forms
     Route::prefix('forms')->group(function () {
-        Route::get('/', function () {
-            return view('reports.index');
-        })->name('forms.index');
+        Route::get('/', [FormsController::class, 'index'])->name('forms.index');
 
         # /admin/forms/manage-forms
         Route::prefix('manage-forms')->group(function () {
             Route::get('/', [ManageFormsController::class, 'index'])->name('manage-forms.index');
             Route::get('/create', [ManageFormsController::class, 'create'])->name('manage-forms.create');
-            Route::get('/edit/{id}/{code_message?}', [ManageFormsController::class, 'edit'])->name('manage-forms.edit');
+            Route::get('/edit/{id}', [ManageFormsController::class, 'edit'])->name('manage-forms.edit');
             Route::get('/delete/{id}', [ManageFormsController::class, 'delete'])->name('manage-forms.delete');
             Route::post('/store', [ManageFormsController::class, 'store'])->name('manage-forms.store');
             Route::post('/update/{id}', [ManageFormsController::class, 'update'])->name('manage-forms.update');
 
+            # /admin/forms/manage-forms/sections
             Route::prefix('sections')->group(function () {
-                Route::get('/', [ManageFormsSectionsController::class, 'load'])->name('manage-forms.sections.load');
+                Route::get('/{type_of_field}', [ManageFormsSectionsController::class, 'field'])->name('manage-forms.sections.field');
                 Route::post('/', [ManageFormsSectionsController::class, 'store'])->name('manage-forms.sections.store');
             });
         });

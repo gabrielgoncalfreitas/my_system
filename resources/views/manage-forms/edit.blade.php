@@ -25,14 +25,14 @@
                 </div>
 
                 <div class="col-sm-10 col-xs-12 row align-items-center">
-                    @if ($code_message == 1)
+                    @if ($alert == 'created')
                         @include('components.alert', [
                             'icon' => '<i class="bi bi-list-check"></i>',
                             'description' => 'Form created!',
                             'type' => 'success',
                             'dismiss' => true,
                         ])
-                    @elseif ($code_message == 2)
+                    @elseif ($alert == 'edited')
                         @include('components.alert', [
                             'icon' => '<i class="bi bi-pencil-square"></i>',
                             'description' => 'Form updated!',

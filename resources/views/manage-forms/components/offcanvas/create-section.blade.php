@@ -5,6 +5,10 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <form action="{{ route('manage-forms.sections.store') }}"></form>
+        @include('manage-forms.components.offcanvas.types-of-fields')
+
+        <form action="{{ route('manage-forms.sections.store') }}" id="offcanvas-body-section">
+            @csrf
+        </form>
     </div>
 </div>

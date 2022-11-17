@@ -30,10 +30,11 @@ class ManageFormsController extends Controller
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
         return view('manage-forms.index', [
-            'forms' => Forms::all()->sortBy('id')
+            'forms' => Forms::all()->sortBy('id'),
+            'alert' => $request->session()->pull('manage-forms.alert')
         ]);
     }
 
@@ -60,9 +61,9 @@ class ManageFormsController extends Controller
         $forms->details = json_encode($request->details);
         $forms->save();
 
-        return redirect(route('manage-forms.edit', [
-            Forms::all()->sortByDesc('id')->first()->id, 1
-        ]));
+        $request->session()->put('manage-forms.alert', 'created');
+
+        return redirect(route('manage-forms.edit', Forms::all()->sortByDesc('id')->first()->id));
     }
 
     public function update($id, Request $request, Forms $forms)
@@ -82,27 +83,29 @@ class ManageFormsController extends Controller
 
         $forms->where('id', $id)->update(['details' => json_encode($request->details)]);
 
-        return redirect(route('manage-forms.edit', [
-            $id, 2
-        ]));
+        $request->session()->put('manage-forms.alert', 'edited');
+
+        return redirect(route('manage-forms.edit', $id));
     }
 
-    public function edit($id, $code_message = null)
+    public function edit($id, Request $request)
     {
         if (!empty(Forms::find($id))) {
             return view('manage-forms.edit', [
-                'id'           => $id,
-                'forms'        => Forms::where('id', $id)->get()->first(),
-                'code_message' => $code_message,
+                'id'    => $id,
+                'forms' => Forms::where('id', $id)->get()->first(),
+                'alert' =>  $request->session()->pull('manage-forms.alert'),
             ]);
         } else {
             return redirect(route('manage-forms.index'));
         }
     }
 
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         if (!empty(Forms::find($id))) Forms::where('id', $id)->delete();
+
+        $request->session()->put('manage-forms.alert', 'deleted');
 
         return redirect(route('manage-forms.index'));
     }
