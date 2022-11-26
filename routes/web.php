@@ -34,8 +34,8 @@ Route::prefix('admin')->group(function () {
 
             # /admin/forms/manage-forms/sections
             Route::prefix('sections')->group(function () {
-                Route::get('/{type_of_field}', [ManageFormsSectionsController::class, 'field'])->name('manage-forms.sections.field');
                 Route::post('/', [ManageFormsSectionsController::class, 'store'])->name('manage-forms.sections.store');
+                Route::post('/get-field', [ManageFormsSectionsController::class, 'field'])->name('manage-forms.sections.field');
             });
         });
     });

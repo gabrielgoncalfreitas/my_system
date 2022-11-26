@@ -1,27 +1,42 @@
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!**************************************!*\
-  !*** ./resources/js/manage-forms.js ***!
-  \**************************************/
-var types_of_fields = document.querySelector('#types-of-fields');
-var offcanvas_body_section = document.querySelector('#offcanvas-body-section');
-types_of_fields.addEventListener('change', function () {
-  var type_of_field = types_of_fields.value;
-  fetch("/admin/forms/manage-forms/sections/text", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'url': "/admin/forms/manage-forms/sections/text",
-      "X-CSRF-Token": document.querySelector('input[name=_token]').value
+let section_is_empty_message = '<h5>Section is empty</h5>';
+
+function addNewFieldsToSection(element) {
+
+    let get_field_url = element.getAttribute('get-field-url');
+    let section_fields_amount = parseInt($('#section').attr('section-fields-amount'));
+
+    $.ajax({
+        url: get_field_url,
+        method: 'POST',
+        headers: {
+            'X-CSRF-Token': $('input[name=_token]').val()
+        },
+        data: {
+            type_of_field: element.value,
+            section_fields_amount: section_fields_amount
+
+        },
+        success: function (data) {
+            if ($('#section').attr('section-fields-amount') == '0') {
+                $('#section-body').html('');
+            }
+
+            $('#section-body').append(data);
+            $('#field-id-on-section-' + section_fields_amount).hide().fadeIn(100);
+
+            let sections_fields_amount = parseInt($('#section').attr('section-fields-amount')) + 1;
+            $('#section').attr('section-fields-amount', sections_fields_amount);
+        }
+    });
+}
+
+function removeFieldOnSection(element_id) {
+    let sections_fields_amount = parseInt($('#section').attr('section-fields-amount')) - 1;
+    $('#section').attr('section-fields-amount', sections_fields_amount);
+
+    if ($('#section').attr('section-fields-amount') == '0') {
+        $('#section-body').append(section_is_empty_message).hide().fadeIn(100);
     }
-  }).then(function (response) {
-    return response.json();
-  }).then(function (premise) {
-    var new_field = document.createElement('div');
-    new_field.innerHTML = premise;
-    offcanvas_body_section.appendChild(new_field);
-  });
-});
-/******/ })()
-;
+
+    $('#' + element_id).remove();
+}

@@ -89,37 +89,33 @@
     </div>
 </div>
 
-<div class="container mt-3 mb-2 d-flex justify-content-end">
-    <div data-bs-toggle="offcanvas" data-bs-target="#create-section" aria-controls="create-section">
-        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip"
-            data-bs-title="Add new section" id="manage-forms-add-new-section">
-            <i class="bi bi-receipt"></i>
-        </button>
+<div class="container mt-5 mb-2">
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="types-of-fields"
+                get-field-url="{{ route('manage-forms.sections.field') }}" onclick="addNewFieldsToSection(this)">
+                <option selected>Open this select menu</option>
+                <option value="text">One</option>
+                <option value="text">Two</option>
+                <option value="text">Three</option>
+            </select>
+        </div>
+
+        <div class="col-auto ps-0">
+            <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="tooltip"
+                data-bs-title="Save section" id="manage-forms-save-section">
+                <i class="bi bi-bookmark-check"></i>
+            </button>
+        </div>
     </div>
 </div>
 
 <div class="container" id="sections">
-    <div class="card-body text-center">
-        <ul class="list-group">
-            <li class="list-group-item bg-dark border-white text-white">
-                Sections is empty
-            </li>
-        </ul>
+    <div class="card bg-dark border-white" id="section" section-fields-amount="0">
+        <div class="card-body border-white text-center row" id="section-body">
+            <h5>Section is empty</h5>
+        </div>
     </div>
-    {{-- <div class="card bg-dark border-white" id="">
-        <div class="card-header border-white" id="">
-            <div class="container row align-items-center">
-                <div class="col my-3">
-                    <h5 id="">Edit form</h5>
-                </div>
-            </div>
-        </div>
-        <div class="card-body" id="secion--body">
-
-        </div>
-    </div> --}}
 </div>
-
-@include('manage-forms.components.offcanvas.create-section')
 
 @include('components.core.footer')

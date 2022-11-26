@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class ManageFormsSectionsController extends Controller
 {
-    public function field($type_of_field)
+    public function field(Request $request)
     {
-        $view = view("manage-forms.components.offcanvas.fields.$type_of_field")->render();
-        
+        $field_id_on_section = "field-id-on-section-$request->section_fields_amount";
+
+        $view = view("manage-forms.components.fields." . $request->type_of_field, [
+            'field_id_on_section' => $field_id_on_section
+        ])->render();
+
         return response()->json($view, 200);
     }
 }
