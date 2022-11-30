@@ -32,10 +32,12 @@ class ManageFormsController extends Controller
 
     public function index(Request $request)
     {
-        return view('manage-forms.index', [
-            'forms' => Forms::all()->sortBy('id'),
-            'alert' => $request->session()->pull('manage-forms.alert')
-        ]);
+        $forms = Forms::all()->sortBy('id');
+        $alert = $request->session()->pull('manage-forms.alert');
+
+        return view('manage-forms.index', compact([
+            'forms', 'alert'
+        ]));
     }
 
     public function create()
@@ -68,20 +70,25 @@ class ManageFormsController extends Controller
 
     public function update($id, Request $request, Forms $forms)
     {
-        $rules     = $this->rules();
-        $messages  = $this->messages();
-        $validator = Validator::make($request->all(), $rules, $messages);
+        // \Log::info($request->json);
+        // return redirect(route('manage-forms.edit', $id));
+        // $rules     = $this->rules();
+        // $messages  = $this->messages();
+        // $validator = Validator::make($request->all(), $rules, $messages);
 
-        if ($validator->fails()) {
-            return view('manage-forms.edit', [
-                'errors'          => $validator->errors()->all(),
-                'old_title'       => $request->title        ?? '',
-                'old_instruction' => $request->instruction  ?? '',
-                'old_footer'      => $request->footer       ?? '',
-            ]);
-        }
+        // if ($validator->fails()) {
+        //     return view('manage-forms.edit', [
+        //         'errors'          => $validator->errors()->all(),
+        //         'old_title'       => $request->title        ?? '',
+        //         'old_instruction' => $request->instruction  ?? '',
+        //         'old_footer'      => $request->footer       ?? '',
+        //     ]);
+        // }
 
-        $forms->where('id', $id)->update(['details' => json_encode($request->details)]);
+        $forms->where('id', $id)->update([
+            'details' => $request->json['details'] ?? '[""]',
+            'fields' => $request->json['fields'] ?? '[""]'
+        ]);
 
         $request->session()->put('manage-forms.alert', 'edited');
 
@@ -90,12 +97,13 @@ class ManageFormsController extends Controller
 
     public function edit($id, Request $request)
     {
+        $forms = Forms::where('id', $id)->get()->first();
+        $alert = $request->session()->pull('manage-forms.alert');
+
         if (!empty(Forms::find($id))) {
-            return view('manage-forms.edit', [
-                'id'    => $id,
-                'forms' => Forms::where('id', $id)->get()->first(),
-                'alert' =>  $request->session()->pull('manage-forms.alert'),
-            ]);
+            return view('manage-forms.edit', compact([
+                'id', 'forms', 'alert'
+            ]));
         } else {
             return redirect(route('manage-forms.index'));
         }

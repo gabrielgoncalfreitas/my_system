@@ -10,11 +10,13 @@ class ManageFormsSectionsController extends Controller
 {
     public function field(Request $request)
     {
-        $field_id_on_section = "field-id-on-section-$request->section_fields_amount";
+        $id      = $request->section_fields_next_id;
+        $form_id = $request->form_id;
+        $type    = $request->type_of_field;
 
-        $view = view("manage-forms.components.fields." . $request->type_of_field, [
-            'field_id_on_section' => $field_id_on_section
-        ])->render();
+        $view = view("manage-forms.components.new-field", compact([
+            'id', 'form_id', 'type'
+        ]))->render();
 
         return response()->json($view, 200);
     }

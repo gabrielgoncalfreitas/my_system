@@ -16,36 +16,37 @@
     </nav>
 </div>
 
-<div class="container">
-    <div class="card bg-dark border-white">
-        <div class="card-header border-white">
-            <div class="container m-0 p-0 row align-items-center">
-                <div class="col my-3">
-                    <h5>Edit form</h5>
-                </div>
+<form action="{{ route('manage-forms.update', $id) }}" method="POST">
+    @csrf
+    <div class="container">
+        <div class="card bg-dark border-white">
+            <div class="card-header border-white">
+                <div class="container m-0 p-0 row align-items-center">
+                    <div class="col my-3">
+                        <h5>Edit form</h5>
+                    </div>
 
-                <div class="col-sm-10 col-xs-12 row align-items-center">
-                    @if ($alert == 'created')
-                        @include('components.alert', [
-                            'icon' => '<i class="bi bi-list-check"></i>',
-                            'description' => 'Form created!',
-                            'type' => 'success',
-                            'dismiss' => true,
-                        ])
-                    @elseif ($alert == 'edited')
-                        @include('components.alert', [
-                            'icon' => '<i class="bi bi-pencil-square"></i>',
-                            'description' => 'Form updated!',
-                            'type' => 'primary',
-                            'dismiss' => true,
-                        ])
-                    @endif
+                    <div class="col-sm-10 col-xs-12 row align-items-center">
+                        @if ($alert == 'created')
+                            @include('components.alert', [
+                                'icon' => '<i class="bi bi-list-check"></i>',
+                                'description' => 'Form created!',
+                                'type' => 'success',
+                                'dismiss' => true,
+                            ])
+                        @elseif ($alert == 'edited')
+                            @include('components.alert', [
+                                'icon' => '<i class="bi bi-pencil-square"></i>',
+                                'description' => 'Form updated!',
+                                'type' => 'primary',
+                                'dismiss' => true,
+                            ])
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body border-top border-white">
-            <form action="{{ route('manage-forms.update', $id) }}" method="POST">
-                @csrf
+            <div class="card-body border-top border-white">
+
 
                 @php
                     $details = json_decode($forms->details, true);
@@ -53,7 +54,7 @@
 
                 @include('components.fields.text', [
                     'title' => 'title',
-                    'name' => 'details[title]',
+                    'name' => 'json[details][title]',
                     'maxlength' => 255,
                     'required' => true,
                     'label' => 'Title <span class="text-danger">*</span>',
@@ -62,7 +63,7 @@
 
                 @include('components.fields.textarea', [
                     'title' => 'instruction',
-                    'name' => 'details[instruction]',
+                    'name' => 'json[details][instruction]',
                     'maxlength' => 64000,
                     'required' => true,
                     'label' => 'Instruction <span class="text-danger">*</span>',
@@ -71,7 +72,7 @@
 
                 @include('components.fields.textarea', [
                     'title' => 'footer',
-                    'name' => 'details[footer]',
+                    'name' => 'json[details][footer]',
                     'maxlength' => 64000,
                     'required' => true,
                     'label' => 'Footer text <span class="text-danger">*</span>',
@@ -84,38 +85,76 @@
                         Update
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container mt-5 mb-2">
-    <div class="row justify-content-end">
-        <div class="col-md-6">
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="types-of-fields"
-                get-field-url="{{ route('manage-forms.sections.field') }}" onclick="addNewFieldsToSection(this)">
-                <option selected>Open this select menu</option>
-                <option value="text">One</option>
-                <option value="text">Two</option>
-                <option value="text">Three</option>
-            </select>
-        </div>
+    <div class="container mt-5 mb-2">
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="types-of-fields"
+                    get-field-url="{{ route('manage-forms.sections.field') }}" onclick="addNewFieldsToSection(this)">
+                    <option selected>-Select one field-</option>
+                    <optgroup label="Fields">
+                        <option value="text">Text</option>
+                        <option value="textarea">Textarea</option>
+                    </optgroup>
+                    <optgroup label="Typography">
+                        <option value="section-divider">Section divider</option>
+                        <option value="h1">Header 1</option>
+                        <option value="h2">Header 2</option>
+                        <option value="h3">Header 3</option>
+                        <option value="h4">Header 4</option>
+                        <option value="h5">Header 5</option>
+                        <option value="h6">Header 6</option>
+                        <option value="paragraph">Paragraph</option>
+                    </optgroup>
+                </select>
+            </div>
 
-        <div class="col-auto ps-0">
-            <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="tooltip"
-                data-bs-title="Save section" id="manage-forms-save-section">
-                <i class="bi bi-bookmark-check"></i>
-            </button>
+            <div class="col-auto ps-0">
+                <button type="submit" class="btn btn-sm btn-outline-success" data-bs-toggle="tooltip"
+                    data-bs-title="Save section" id="manage-forms-save-section">
+                    <i class="bi bi-bookmark-check"></i>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container" id="sections">
-    <div class="card bg-dark border-white" id="section" section-fields-amount="0">
-        <div class="card-body border-white text-center row" id="section-body">
-            <h5>Section is empty</h5>
-        </div>
+    <div class="container" id="sections">
+        @if (isset($forms->fields) && $forms->fields != '[""]')
+            <div class="card bg-dark border-white" id="section"
+                section-fields-amount="{{ count(json_decode($forms->fields, true)) }}"
+                section-fields-next-id="{{ count(json_decode($forms->fields, true)) }}">
+                <div class="card-body border-white row" id="section-body">
+                    @foreach (json_decode($forms->fields, true) as $id => $field)
+                        @php
+                            $type = $field['type'];
+                            $title = $field['title'] ?? '';
+                            $placeholder = $field['placeholder'] ?? '';
+                            $required = $field['required'] ?? '';
+                            $fullcolumn = $field['fullcolumn'] ?? '';
+                        @endphp
+
+                        @include('manage-forms.components.new-field', [
+                            $id,
+                            $type,
+                            $title,
+                            $placeholder,
+                            $required,
+                            $fullcolumn,
+                        ])
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <div class="card bg-dark border-white" id="section" section-fields-amount="0" section-fields-next-id="0">
+                <div class="card-body border-white row" id="section-body">
+                    <h5 class="text-center">Section is empty</h5>
+                </div>
+            </div>
+        @endif
     </div>
-</div>
+</form>
 
 @include('components.core.footer')
