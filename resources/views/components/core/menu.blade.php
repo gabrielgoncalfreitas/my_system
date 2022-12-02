@@ -100,6 +100,7 @@
                                                 Configurations</a></li>
                                         <li><a class="dropdown-item text-secondary" href="#">Exported
                                                 Documents</a></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -177,14 +178,23 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="dropdown mx-5">
+                    <a class="nav-link active" href="{{ route('todos.index') }}" aria-expanded="false">
+                        <span data-bs-toggle="tooltip" data-bs-title="Todos">
+                            <i class="bi bi-check2-all"></i>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="dropdown mx-5">
+                    <a class="nav-link active" href="{{ route('features.index') }}" aria-expanded="false">
+                        <span data-bs-toggle="tooltip" data-bs-title="Features">
+                            <i class="bi bi-tools"></i>
+                        </span>
+                    </a>
+                </li>
             </ul>
-            <li class="dropdown mx-5">
-                <a class="nav-link active" href="{{ route('todos.index') }}" aria-expanded="false">
-                    <span data-bs-toggle="tooltip" data-bs-title="Todos">
-                        <i class="bi bi-check2-all"></i>
-                    </span>
-                </a>
-            </li>
         </div>
     </div>
 </nav>
