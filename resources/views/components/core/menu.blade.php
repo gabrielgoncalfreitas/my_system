@@ -190,7 +190,7 @@
                 <li class="dropdown mx-5">
                     <a class="nav-link active" href="{{ route('features.index') }}" aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Features">
-                            <i class="bi bi-gear"></i>
+                            <i class="bi bi-tools"></i>
                         </span>
                     </a>
                 </li>
