@@ -29,28 +29,40 @@
 <h5 align="center">How to install</h5>
 
 - Clone or download the project
-`git clone git@github.com:gabrielgoncalfreitas/my_system.git`
+```sh
+git clone git@github.com:gabrielgoncalfreitas/my_system.git
+```
 <br>
 
 - Composer install
-`composer install`
+```sh
+composer install
+```
 <br>
 
 - Install all node dependencies
-`npm install`
+```sh
+npm install
+```
 <br>
 
 - Create a new <b>.env</b> (I didn't make any specific setting to <b>.env</b>, so you can use the default <b>.env</b>. If in the future I do some specific configuration I will detail in this README.)
 <br>
 
 - Generate a new app key
-`php artisan key:generate`
+```sh
+php artisan key:generate
+```
 <br>
 
 - Run all migrations with seeds
-`php artisan migration --seed`
+```sh
+php artisan migration --seed
+```
 <br>
 
 - Now you can run the project and be happy :)
-`php artisan serve`
+```sh
+php artisan serve
+```
 <br>
