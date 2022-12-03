@@ -10,14 +10,16 @@ class ManageFormsSectionsController extends Controller
 {
     public function field(Request $request)
     {
+
         $id      = $request->section_fields_next_id;
         $form_id = $request->form_id;
-        $type    = $request->type_of_field;
+        $field    = $request->field_data;
 
         $view = view("manage-forms.components.new-field", compact([
-            'id', 'form_id', 'type'
+            'id', 'form_id', 'field'
         ]))->render();
 
         return response()->json($view, 200);
+        return response()->json([''], 200);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forms\ManageForms;
 
 use App\Http\Controllers\Controller;
+use App\Models\FieldsCategoriesAndNames;
 use App\Models\Forms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -99,10 +100,11 @@ class ManageFormsController extends Controller
     {
         $forms = Forms::where('id', $id)->get()->first();
         $alert = $request->session()->pull('manage-forms.alert');
+        $fields_categories_names = FieldsCategoriesAndNames::select('fields_categories_names')->first();
 
         if (!empty(Forms::find($id))) {
             return view('manage-forms.edit', compact([
-                'id', 'forms', 'alert'
+                'id', 'forms', 'alert', 'fields_categories_names'
             ]));
         } else {
             return redirect(route('manage-forms.index'));

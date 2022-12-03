@@ -93,22 +93,10 @@
         <div class="row justify-content-end">
             <div class="col-md-6">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="types-of-fields"
-                    get-field-url="{{ route('manage-forms.sections.field') }}" onclick="addNewFieldsToSection(this)">
+                    name="json[section_fields][select_field][]"
+                    get-field-url="{{ route('manage-forms.sections.field') }}" onchange="addNewFieldsToSection(this)">
                     <option selected>-Select one field-</option>
-                    <optgroup label="Fields">
-                        <option value="text">Text</option>
-                        <option value="textarea">Textarea</option>
-                    </optgroup>
-                    <optgroup label="Typography">
-                        <option value="section-divider">Section divider</option>
-                        <option value="h1">Header 1</option>
-                        <option value="h2">Header 2</option>
-                        <option value="h3">Header 3</option>
-                        <option value="h4">Header 4</option>
-                        <option value="h5">Header 5</option>
-                        <option value="h6">Header 6</option>
-                        <option value="paragraph">Paragraph</option>
-                    </optgroup>
+                    @include('manage-forms.components.fields-categories-and-names')
                 </select>
             </div>
 

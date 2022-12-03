@@ -89,6 +89,8 @@
                                 Manage
                             </div>
                             <ul class="dropdown-menu dropend dropdown-menu-dark">
+                                <li><a class="dropdown-item"
+                                        href="{{ route('manage-forms.index') }}">Form</a></li>
                                 <li><a class="dropdown-item text-secondary" href="#">Content</a></li>
                                 <li class="dropdown">
                                     <div class="dropdown-item dropdown-toggle text-secondary" role="button"
@@ -103,8 +105,6 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="{{ route('manage-forms.index') }}">Form</a>
                         </li>
                         <li><a class="dropdown-item text-secondary" href="#">Map Areas</a></li>
                         <li class="dropdown">

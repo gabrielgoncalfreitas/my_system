@@ -5,6 +5,11 @@ function addNewFieldsToSection(element) {
     let form_id = window.location.pathname.replace('/admin/forms/manage-forms/edit/', '');
     let get_field_url = element.getAttribute('get-field-url');
     let section_fields_next_id = parseInt($('#section').attr('section-fields-next-id'));
+    let field_data = {
+        'field_category': Array.from(element.value.split('|'))[0],
+        'type_of_field': Array.from(element.value.split('|'))[1],
+        'field_name': Array.from(element.value.split('|'))[2],
+    };
 
     $.ajax({
         url: get_field_url,
@@ -14,7 +19,7 @@ function addNewFieldsToSection(element) {
         },
         data: {
             form_id: form_id,
-            type_of_field: element.value,
+            field_data: field_data,
             section_fields_next_id: section_fields_next_id
 
         },
