@@ -14,8 +14,8 @@
                         </span>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">List</a></li>
-                        <li><a class="dropdown-item" href="#">Create</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">List</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">Create</a></li>
                     </ul>
                 </li>
 
@@ -27,8 +27,8 @@
                         </span>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">List</a></li>
-                        <li><a class="dropdown-item" href="#">Create</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">List</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">Create</a></li>
                     </ul>
                 </li>
 
@@ -40,8 +40,8 @@
                         </span>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">List</a></li>
-                        <li><a class="dropdown-item" href="#">Create</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">List</a></li>
+                        <li><a class="dropdown-item text-secondary" href="#">Create</a></li>
                     </ul>
                 </li>
 
