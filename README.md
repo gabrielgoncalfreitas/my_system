@@ -7,7 +7,7 @@
     I created this study project with the intention of practicing and centralizing all my programming learning. You can also follow the issues and scrum planning for this project at the following links:
 </p>
 
-- Scrum planning: [TRELLO](https://www.github.com/gabrielgoncalfreitas)
+- Scrum planning: [TRELLO](https://trello.com/b/1AmRGgkG)
 
 <hr>
 
