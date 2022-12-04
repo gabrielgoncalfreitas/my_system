@@ -6,6 +6,7 @@ use App\Http\Controllers\Forms\ManageForms\ManageFormsController;
 use App\Http\Controllers\Forms\ManageForms\ManageFormsSectionsController;
 use App\Http\Controllers\Reports\ReportsController;
 use App\Http\Controllers\Todos\TodosController;
+use App\Http\Controllers\Workers\WorkersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,11 @@ Route::prefix('admin')->group(function () { # /admin
 
     Route::prefix('reports')->group(function () { # /admin/reports
         Route::get('/', [ReportsController::class, 'index'])->name('admin.reports.index');
+    });
+
+    Route::prefix('workers')->group(function () { # /admin/workers
+        Route::get('/', [WorkersController::class, 'index'])->name('workers.index');
+        Route::get('/create', [WorkersController::class, 'create'])->name('workers.create');
     });
 
     Route::prefix('forms')->group(function () { # /admin/forms
@@ -36,16 +42,13 @@ Route::prefix('admin')->group(function () { # /admin
         });
     });
 
-
     Route::prefix('todos')->group(function () { # /admin/todos
         Route::get('/', [TodosController::class, 'index'])->name('todos.index');
         Route::get('/view/{id}', [TodosController::class, 'view'])->name('todos.view');
         Route::get('/complete/{id}/{returnToView}', [TodosController::class, 'complete'])->name('todos.complete');
         Route::get('/incomplete/{id}/{returnToView}', [TodosController::class, 'incomplete'])->name('todos.incomplete');
         Route::get('/delete/{id}', [TodosController::class, 'delete'])->name('todos.delete');
-        Route::get('/create',
-            [TodosController::class, 'create']
-        )->name('todos.create');
+        Route::get('/create', [TodosController::class, 'create'])->name('todos.create');
         Route::post('/create', [TodosController::class, 'store'])->name('todos.store');
         Route::get('/edit/{id}', [TodosController::class, 'edit'])->name('todos.edit');
         Route::post('/edit/{id}', [TodosController::class, 'update'])->name('todos.update');

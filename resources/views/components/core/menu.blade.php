@@ -33,6 +33,19 @@
                 </li>
 
                 <li class="dropdown mx-5">
+                    <div class="nav-link dropdown-toggle active" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span data-bs-toggle="tooltip" data-bs-title="Workers">
+                            <i class="bi bi-person-gear"></i>
+                        </span>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="{{ route('workers.index') }}">List</a></li>
+                        <li><a class="dropdown-item" href="{{ route('workers.create') }}">Create</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown mx-5">
                     <div class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span data-bs-toggle="tooltip" data-bs-title="Premises">
@@ -78,7 +91,8 @@
                                 <li><a class="dropdown-item text-secondary" href="#">Import Reports updates</a>
                                 </li>
                                 <li><a class="dropdown-item text-secondary" href="#">IOM Import</a></li>
-                                <li><a class="dropdown-item text-secondary" href="#">Teams Permission Mapping</a>
+                                <li><a class="dropdown-item text-secondary" href="#">Teams Permission
+                                        Mapping</a>
                                 </li>
                             </ul>
                         </li>
@@ -89,8 +103,7 @@
                                 Manage
                             </div>
                             <ul class="dropdown-menu dropend dropdown-menu-dark">
-                                <li><a class="dropdown-item"
-                                        href="{{ route('manage-forms.index') }}">Form</a></li>
+                                <li><a class="dropdown-item" href="{{ route('manage-forms.index') }}">Form</a></li>
                                 <li><a class="dropdown-item text-secondary" href="#">Content</a></li>
                                 <li class="dropdown">
                                     <div class="dropdown-item dropdown-toggle text-secondary" role="button"
