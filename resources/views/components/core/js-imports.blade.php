@@ -7,3 +7,4 @@
 <script src="{{ asset('assets/js/dist/jquery/jquery-3.6.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script src="{{ asset('assets/js/manage-forms.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/multiselect.js') }}"></script>
