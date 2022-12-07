@@ -4,7 +4,7 @@
 </h1>
 
 <p align="justify">
-    I created this study project with the intention of practicing and centralizing all my programming learning. You can also follow the issues and scrum planning for this project at the following links:
+    I created this study project with the intention of practicing and centralizing all my programming knowledge. You can also follow the issues and scrum planning for this project at the following links:
 </p>
 
 - Scrum planning: [TRELLO](https://trello.com/b/1AmRGgkG)
