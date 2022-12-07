@@ -24,77 +24,11 @@
         <form method="POST">
             <div class="card-body border-white row">
 
-                <h5 class="text-center fw-light">Details</h5>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-2 mb-5">
                     <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingTitle" placeholder="Title">
-                            <option selected>-Select a title-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingTitle">Title</label>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingGender" placeholder="Gender">
-                            <option selected>-Select a gender-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingGender">Gender</label>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingGender" placeholder="Gender">
-                            <option selected>-Select a gender-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingGender">Gender</label>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingLanguage" placeholder="Language">
-                            <option selected>-Select the languages-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingLanguage">Language</label>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-5">
-                    <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingReligion" placeholder="Religion">
-                            <option selected>-Select the religions-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingReligion">Religion</label>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-5">
-                    <div class="form-floating text-dark">
-                        <select type="text" class="form-control" id="floatingSexualOrientations"
-                            placeholder="Sexual Orientations">
-                            <option selected>-Select the sexual orientations-</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingSexualOrientations">Sexual Orientations</label>
+                        <input type="date" class="form-control" id="floatingHiringDate" placeholder="Hiring date"
+                            value="{{ date('Y-m-d') }}">
+                        <label for="floatingHiringDate">Hiring date</label>
                     </div>
                 </div>
 
@@ -122,10 +56,54 @@
 
                 <div class="col-md-2 mb-5">
                     <div class="form-floating text-dark">
-                        <input type="date" class="form-control" id="floatingDateOfBirth"
-                            placeholder="Date of birth">
+                        <input type="date" class="form-control" id="floatingDateOfBirth" placeholder="Date of birth">
                         <label for="floatingDateOfBirth">Date of birth</label>
                     </div>
+                </div>
+
+                <h5 class="text-center fw-light">Details</h5>
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating text-dark">
+                        <select type="text" class="form-select" id="floatingTitles" placeholder="Titles"
+                            name="">
+                            <option selected>-Select a option-</option>
+                            @foreach ($titles as $title)
+                                <option value="{{ $title->description }}">{{ $title->description }}</option>
+                            @endforeach
+                        </select>
+                        <label for="floatingTitles">Titles</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating text-dark">
+                        <select type="text" class="form-select" id="floatingGenders" placeholder="Genders"
+                            name="">
+                            <option selected>-Select a option-</option>
+                            @foreach ($genders as $gender)
+                                <option value="{{ $gender->description }}">{{ $gender->description }}</option>
+                            @endforeach
+                        </select>
+                        <label for="floatingGenders">Genders</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    @include('components.plugins.multiselect', [
+                        'plugin_multiselect_id' => 'multi-select-language',
+                        'placeholder' => 'Languages',
+                        'name' => '',
+                        'options' => $languages,
+                    ])
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    @include('components.plugins.multiselect', [
+                        'plugin_multiselect_id' => 'multi-select-religion',
+                        'placeholder' => 'Religion',
+                        'name' => '',
+                        'options' => $religions,
+                    ])
                 </div>
 
                 <h5 class="text-center fw-light">Documents</h5>

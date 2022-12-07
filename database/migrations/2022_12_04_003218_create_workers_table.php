@@ -29,13 +29,13 @@ return new class extends Migration
             $table->json('office');
             $table->json('status');
             $table->date('date_of_birth'); # ok
-            $table->date('hiring_date');
-            $table->date('firing_date');
-            $table->foreignId('title_id')->constrained('titles'); # ok
-            $table->foreignId('gender_id')->constrained('genders'); # ok
-            $table->foreignId('language_id')->constrained('languages'); # ok
-            $table->foreignId('religion_id')->constrained('religions'); # ok
-            $table->foreignId('sexual_orientation_id')->constrained('sexual_orientations'); # ok
+            $table->json('titles'); # ok
+            $table->json('genders'); # ok
+            $table->json('languages'); # ok
+            $table->json('religions'); # ok
+            $table->json('sexual_orientations'); # ok
+            $table->date('hiring_date'); # ok
+            $table->date('firing_date'); # ok
 
             $table->timestamps();
         });

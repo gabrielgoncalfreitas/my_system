@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Workers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genders;
+use App\Models\Languages;
+use App\Models\Religions;
+use App\Models\Titles;
 use App\Models\Workers;
 use Illuminate\Http\Request;
 
@@ -19,7 +23,7 @@ class WorkersController extends Controller
         $alert   = $request->session()->pull('workers.alert');
 
         return view('workers.index', compact([
-            'workers', 'alert'
+            'workers', 'alert',
         ]));
     }
 
@@ -30,7 +34,14 @@ class WorkersController extends Controller
      */
     public function create()
     {
-        return view('workers.create');
+        $titles    = Titles::select('description')->get()->sortBy('description');
+        $genders   = Genders::select('description')->get()->sortBy('description');
+        $languages = Languages::select('description')->get()->sortBy('description');
+        $religions = Religions::select('description')->get()->sortBy('description');
+
+        return view('workers.create', compact([
+            'titles', 'genders', 'languages', 'religions'
+        ]));
     }
 
     /**
