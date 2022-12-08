@@ -11,6 +11,18 @@
     </nav>
 </div>
 
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+</div>
+
 <div class="container">
     <div class="card bg-dark border-white">
         <div class="card-header row align-items-center">
@@ -29,6 +41,13 @@
                         'icon' => '<i class="bi bi-pencil-square"></i>',
                         'description' => 'Worker updated!',
                         'type' => 'primary',
+                        'dismiss' => true,
+                    ])
+                @elseif ($alert == 'deleted')
+                    @include('components.alert', [
+                        'icon' => '<i class="bi bi-exclamation-triangle"></i>',
+                        'description' => 'Worker deleted!',
+                        'type' => 'danger',
                         'dismiss' => true,
                     ])
                 @endif
@@ -64,7 +83,7 @@
                                 <td>{{ $worker->middle_name }}</td>
                                 <td>{{ $worker->last_name }}</td>
                                 <td>
-                                @if (isset($worker->date_of_birth))
+                                    @if (isset($worker->date_of_birth))
                                         {{ date('d/m/Y', strtotime($worker->date_of_birth)) }}
                                     @endif
                                 </td>
