@@ -22,6 +22,9 @@ Route::prefix('admin')->group(function () { # /admin
     Route::prefix('workers')->group(function () { # /admin/workers
         Route::get('/', [WorkersController::class, 'index'])->name('workers.index');
         Route::get('/create', [WorkersController::class, 'create'])->name('workers.create');
+        Route::post('/store', [WorkersController::class, 'store'])->name('workers.store');
+        Route::get('/edit/{id}', [WorkersController::class, 'edit'])->name('workers.edit');
+        Route::get('/delete/{id}', [WorkersController::class, 'delete'])->name('workers.delete');
     });
 
     Route::prefix('forms')->group(function () { # /admin/forms

@@ -8,8 +8,8 @@
 <div class="form-floating text-dark">
     <select type="text" class="form-select plugin-multiselect"
         onchange="pluginMultiselect(this, '{{ $plugin_multiselect_id }}')" id="floating{{ $plugin_multiselect_id }}"
-        placeholder="{{ $placeholder }}" name="{{ $name }}">
-        <option selected>-Select a option-</option>
+        placeholder="{{ $placeholder }}" name="{{ $name }}" value="">
+        <option value="" selected>-Select a option-</option>
         @foreach ($options as $option)
             <option value="{{ $option->description }}">{{ $option->description }}</option>
         @endforeach

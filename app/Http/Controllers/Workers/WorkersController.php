@@ -50,9 +50,14 @@ class WorkersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Workers $workers)
     {
-        //
+        $workers->fill($request->except(['_token']));
+        $workers->save();
+
+        $request->session()->put('workers.alert', 'created');
+
+        return redirect(route('workers.index'));
     }
 
     /**
@@ -89,14 +94,12 @@ class WorkersController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Workers  $workers
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Workers $workers)
+    public function delete($id, Request $request)
     {
-        //
+        if (!empty(Workers::find($id))) Workers::where('id', $id)->delete();
+
+        $request->session()->put('workers.alert', 'deleted');
+
+        return redirect(route('workers.index'));
     }
 }

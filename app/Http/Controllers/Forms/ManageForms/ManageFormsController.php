@@ -71,20 +71,19 @@ class ManageFormsController extends Controller
 
     public function update($id, Request $request, Forms $forms)
     {
-        // \Log::info($request->json);
-        // return redirect(route('manage-forms.edit', $id));
-        // $rules     = $this->rules();
-        // $messages  = $this->messages();
-        // $validator = Validator::make($request->all(), $rules, $messages);
+        return redirect(route('manage-forms.edit', $id));
+        $rules     = $this->rules();
+        $messages  = $this->messages();
+        $validator = Validator::make($request->all(), $rules, $messages);
 
-        // if ($validator->fails()) {
-        //     return view('manage-forms.edit', [
-        //         'errors'          => $validator->errors()->all(),
-        //         'old_title'       => $request->title        ?? '',
-        //         'old_instruction' => $request->instruction  ?? '',
-        //         'old_footer'      => $request->footer       ?? '',
-        //     ]);
-        // }
+        if ($validator->fails()) {
+            return view('manage-forms.edit', [
+                'errors'          => $validator->errors()->all(),
+                'old_title'       => $request->title        ?? '',
+                'old_instruction' => $request->instruction  ?? '',
+                'old_footer'      => $request->footer       ?? '',
+            ]);
+        }
 
         $forms->where('id', $id)->update([
             'details' => $request->json['details'] ?? '[""]',

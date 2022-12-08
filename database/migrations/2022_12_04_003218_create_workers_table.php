@@ -15,27 +15,27 @@ return new class extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name'); # ok
-            $table->string('middle_name'); # ok
-            $table->string('last_name'); # ok
-            $table->string('cpf'); # ok
-            $table->string('rg'); # ok
-            $table->string('zip_code'); # ok
-            $table->string('address'); # ok
-            $table->string('city'); # ok
-            $table->string('state'); # ok
-            $table->string('country'); # ok
-            $table->string('titles'); # ok
-            $table->string('genders'); # ok
-            $table->json('sector');
-            $table->json('office');
-            $table->json('status');
-            $table->date('date_of_birth'); # ok
-            $table->json('languages'); # ok
-            $table->json('religions'); # ok
-            $table->json('sexual_orientations'); # ok
-            $table->date('hiring_date'); # ok
-            $table->date('firing_date'); # ok
+            $table->string('first_name')->nullable(); # ok
+            $table->string('middle_name')->nullable(); # ok
+            $table->string('last_name')->nullable(); # ok
+            $table->string('cpf')->nullable(); # ok
+            $table->string('rg')->nullable(); # ok
+            $table->string('cep')->nullable(); # ok
+            $table->string('address')->nullable(); # ok
+            $table->string('city')->nullable(); # ok
+            $table->string('state')->nullable(); # ok
+            $table->string('country')->nullable(); # ok
+            $table->string('titles')->nullable(); # ok
+            $table->string('genders')->nullable(); # ok
+            // $table->json('sector')->nullable();
+            // $table->json('office')->nullable();
+            // $table->json('status')->nullable();
+            $table->date('date_of_birth')->nullable(); # ok
+            // $table->json('languages')->nullable(); # ok
+            // $table->json('religions')->nullable(); # ok
+            // $table->json('sexual_orientations')->nullable(); # ok
+            $table->date('hiring_date')->nullable(); # ok
+            $table->date('firing_date')->nullable(); # ok
 
             $table->timestamps();
         });

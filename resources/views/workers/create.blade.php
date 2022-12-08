@@ -21,13 +21,13 @@
         <div class="card-header py-4 d-flex align-items-center justify-content-between border-white">
             <h5>Create worker</h5>
         </div>
-        <form method="POST">
+        <form action="{{ route('workers.store') }}" method="POST">
+            @csrf
             <div class="card-body border-white row">
-
                 <div class="col-md-2 mb-5">
                     <div class="form-floating text-dark">
                         <input type="date" class="form-control" id="floatingHiringDate" placeholder="Hiring date"
-                            value="{{ date('Y-m-d') }}">
+                            value="{{ date('Y-m-d') }}" name="hiring_date">
                         <label for="floatingHiringDate">Hiring date</label>
                     </div>
                 </div>
@@ -35,28 +35,32 @@
                 <h5 class="text-center fw-light">Name and birth</h5>
                 <div class="col-md-4 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingFirstName" placeholder="First name">
+                        <input type="text" class="form-control" id="floatingFirstName" placeholder="First name"
+                            name="first_name">
                         <label for="floatingFirstName">First name</label>
                     </div>
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingMiddleName" placeholder="Middle name">
+                        <input type="text" class="form-control" id="floatingMiddleName" placeholder="Middle name"
+                            name="middle_name">
                         <label for="floatingMiddleName">Middle name</label>
                     </div>
                 </div>
 
                 <div class="col-md-3 mb-5">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingLastName" placeholder="Last name">
+                        <input type="text" class="form-control" id="floatingLastName" placeholder="Last name"
+                            name="last_name">
                         <label for="floatingLastName">Last name</label>
                     </div>
                 </div>
 
                 <div class="col-md-2 mb-5">
                     <div class="form-floating text-dark">
-                        <input type="date" class="form-control" id="floatingDateOfBirth" placeholder="Date of birth">
+                        <input type="date" class="form-control" id="floatingDateOfBirth" placeholder="Date of birth"
+                            name="date_of_birth">
                         <label for="floatingDateOfBirth">Date of birth</label>
                     </div>
                 </div>
@@ -65,8 +69,8 @@
                 <div class="col-md-6 mb-3">
                     <div class="form-floating text-dark">
                         <select type="text" class="form-select" id="floatingTitles" placeholder="Titles"
-                            name="">
-                            <option selected>-Select a option-</option>
+                            name="titles">
+                            <option value="" selected>-Select a option-</option>
                             @foreach ($titles as $title)
                                 <option value="{{ $title->description }}">{{ $title->description }}</option>
                             @endforeach
@@ -78,8 +82,8 @@
                 <div class="col-md-6 mb-3">
                     <div class="form-floating text-dark">
                         <select type="text" class="form-select" id="floatingGenders" placeholder="Genders"
-                            name="">
-                            <option selected>-Select a option-</option>
+                            name="genders">
+                            <option value="" selected>-Select a option-</option>
                             @foreach ($genders as $gender)
                                 <option value="{{ $gender->description }}">{{ $gender->description }}</option>
                             @endforeach
@@ -92,7 +96,7 @@
                     @include('components.plugins.multiselect', [
                         'plugin_multiselect_id' => 'multi-select-language',
                         'placeholder' => 'Languages',
-                        'name' => '',
+                        'name' => 'languages',
                         'options' => $languages,
                     ])
                 </div>
@@ -101,7 +105,7 @@
                     @include('components.plugins.multiselect', [
                         'plugin_multiselect_id' => 'multi-select-religion',
                         'placeholder' => 'Religion',
-                        'name' => '',
+                        'name' => 'languages',
                         'options' => $religions,
                     ])
                 </div>
@@ -109,14 +113,14 @@
                 <h5 class="text-center fw-light">Documents</h5>
                 <div class="col-md-6 mb-5">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingCpf" placeholder="CPF">
+                        <input type="text" class="form-control" id="floatingCpf" placeholder="CPF" name="cpf">
                         <label for="floatingCpf">CPF</label>
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-5">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingRg" placeholder="RG">
+                        <input type="text" class="form-control" id="floatingRg" placeholder="RG" name="rg">
                         <label for="floatingRg">RG</label>
                     </div>
                 </div>
@@ -124,37 +128,49 @@
                 <h5 class="text-center fw-light">Address</h5>
                 <div class="col-md-3 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingCep" placeholder="CEP">
+                        <input type="text" class="form-control" id="floatingCep" placeholder="CEP"
+                            name="cep">
                         <label for="floatingCep">CEP</label>
                     </div>
                 </div>
 
                 <div class="col-md-9 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingAddress" placeholder="Address">
+                        <input type="text" class="form-control" id="floatingAddress" placeholder="Address"
+                            name="address">
                         <label for="floatingAddress">Address</label>
                     </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingCity" placeholder="City">
+                        <input type="text" class="form-control" id="floatingCity" placeholder="City"
+                            name="city">
                         <label for="floatingCity">City</label>
                     </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingState" placeholder="State">
+                        <input type="text" class="form-control" id="floatingState" placeholder="State"
+                            name="state">
                         <label for="floatingState">State</label>
                     </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <div class="form-floating text-dark">
-                        <input type="text" class="form-control" id="floatingCountry" placeholder="Country">
+                        <input type="text" class="form-control" id="floatingCountry" placeholder="Country"
+                            name="country">
                         <label for="floatingCountry">Country</label>
                     </div>
+                </div>
+
+                <div class="row m-0">
+                    <button type="submit" class="btn btn-sm btn-outline-success">
+                        <i class="bi bi-clipboard2-check"></i>
+                        Save
+                    </button>
                 </div>
             </div>
         </form>
