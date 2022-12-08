@@ -25,12 +25,12 @@ return new class extends Migration
             $table->string('city'); # ok
             $table->string('state'); # ok
             $table->string('country'); # ok
+            $table->string('titles'); # ok
+            $table->string('genders'); # ok
             $table->json('sector');
             $table->json('office');
             $table->json('status');
             $table->date('date_of_birth'); # ok
-            $table->json('titles'); # ok
-            $table->json('genders'); # ok
             $table->json('languages'); # ok
             $table->json('religions'); # ok
             $table->json('sexual_orientations'); # ok
